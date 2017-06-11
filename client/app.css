@@ -160,6 +160,10 @@ label {
   padding: 20px 30px;
   border-bottom-leftt-radius: 5px;
 }
+.panel-login>.panel-heading .login:hover {
+  background-color: #78bf3a;
+  color: #fff;
+}
 .panel-login>.panel-heading a{
   text-decoration: none;
   color: #666;
@@ -171,12 +175,15 @@ label {
 }
 .panel-login>.panel-heading .register {
   padding: 20px 30px;
-  background: #78bf3a;
   border-bottom-right-radius: 5px;
+  color: #666;
+}
+.panel-login>.panel-heading .register:hover {
+  background-color: #78bf3a;
   color: #fff;
 }
+
 .panel-login>.panel-heading a#register-form-link {
-  color: #fff;
   width: 100%;
   text-align: right;
 }
@@ -250,7 +257,7 @@ label {
 .btn-register:hover,
 .btn-register:focus {
   color: #fff;
-  background-color: #2D3B55;
+  background-color: #78bf3a;
 }
 
 
