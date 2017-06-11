@@ -4,7 +4,7 @@
     <h3>All registered users:</h3>
     <ul>
         <li *ngFor="let user of users">
-            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            {{user.email}} ({{user.firstName}} {{user.lastName}})
             - <a (click)="deleteUser(user._id)">Delete</a>
         </li>
     </ul>
@@ -16,7 +16,7 @@
                 <div class="col-md-12 no-pad">
                     <div class="user-pad">
                         <h3>Welcome back, {{ currentUser.firstName }}</h3>
-                        <h4 class="white"><i class="fa fa-check-circle-o"></i> {{ currentUser.username}}</h4>
+                        <h4 class="white"><i class="fa fa-check-circle-o"></i> {{ currentUser.email}}</h4>
                         <button type="button" class="btn btn-labeled btn-success" [routerLink]="['/user/update']">
                             <span class="btn-label"><i class="fa fa-pencil"></i></span>Update</button>
                     </div>
