@@ -2,24 +2,38 @@
 <hr>
 <div class="row">
         <div class="col-md-11 user-details">
-            <div class="row overview">
-                <div class="col-md-4 user-pad text-center">
-                    <h3>First Name</h3>
-                    <h2>{{ currentUser.firstName }}</h2>
-                </div>
-                <div class="col-md-4 user-pad text-center">
-                    <h3>Last Name</h3>
-                    <h2>{{ currentUser.lastName }}</h2>
-                </div>
-                <div class="col-md-4 user-pad text-center">
-                    <h3>Email </h3>
-                    <h2>{{ currentUser.email }}</h2>
-                </div>
+            <div class="col-md-8 col-md-offset-2">
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input
+                                type="text"
+                                id="firstName"
+                                class="form-control"
+                                [ngModel]="currentUser.firstName"
+                                name="firstName"
+                                required>
+                        <label for="lastName">Last Name</label>
+                        <input
+                                type="text"
+                                id="lastName"
+                                class="form-control"
+                                [ngModel]="currentUser.lastName"
+                                name="lastName"
+                                required>
+                        <label for="email">Email</label>
+                        <input
+                                type="text"
+                                id="email"
+                                class="form-control"
+                                [ngModel]="currentUser.email"
+                                name="email"
+                                required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Update</button>                    
+                </form>
             </div>
-            <button type="button" class="btn btn-labeled btn-success" [routerLink]="['']">
-            <span class="btn-label">
-                <i class="fa fa-floppy-o"></i>
-            </span>Save
-        </button>
+
+
         </div>
 </div>

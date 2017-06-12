@@ -1,5 +1,7 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
 
 import { AppConfig } from '../app.config';
 import { User } from '../_models/index';
@@ -7,6 +9,7 @@ import { User } from '../_models/index';
 @Injectable()
 export class UserService {
     constructor(private http: Http, private config: AppConfig) { }
+    userIsEdit = new EventEmitter<User>();
 
     getAll() {
         return this.http.get(this.config.apiUrl + '/users', this.jwt()).map((response: Response) => response.json());
