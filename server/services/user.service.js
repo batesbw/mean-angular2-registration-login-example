@@ -156,12 +156,13 @@ function update(_id, userParam) {
             { _id: mongo.helper.toObjectID(_id) },
             { $set: set },
             function (err, doc) {
-                if (err) deferred.reject(err.name + ': ' + err.message);
-
+                if (err) {
+                    deferred.reject(err.name + ': ' + err.message);
+                    console.log(deferred.reject(err.name + ': ' + err.message));
+                }
                 deferred.resolve();
             });
     }
-
     return deferred.promise;
 }
 

@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, OnInit } from '@angular/core';
+﻿import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
@@ -12,6 +12,7 @@ import { UserService } from '../_services/index';
 export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
+    showAccount: boolean; 
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -27,6 +28,14 @@ export class HomeComponent implements OnInit {
 
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+
+    receiveAccountEvent($event: any) {
+        this.showAccount = $event;
+    }
+
+    showAccountDetail() {
+        this.showAccount = true;
     }
 
 }
