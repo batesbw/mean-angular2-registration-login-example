@@ -1,0 +1,25 @@
+<home-component></home-component>
+<hr>
+<div class="row">
+        <div class="col-md-11 user-details">
+            <div class="row overview">
+                <div class="col-md-4 user-pad text-center">
+                    <h3>First Name</h3>
+                    <h2>{{ currentUser.firstName }}</h4>
+                </div>
+                <div class="col-md-4 user-pad text-center">
+                    <h3>Last Name</h3>
+                    <h2>{{ currentUser.lastName }}</h4>
+                </div>
+                <div class="col-md-4 user-pad text-center">
+                    <h3>Email </h3>
+                    <h2>{{ currentUser.email }}</h4>
+                </div>
+            </div>
+            <button type="button" class="btn btn-labeled btn-success" [routerLink]="['']">
+            <span class="btn-label">
+                <i class="fa fa-floppy-o"></i>
+            </span>Save
+        </button>
+        </div>
+</div>
