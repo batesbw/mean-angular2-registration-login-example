@@ -7,6 +7,7 @@ import { HomeComponent } from '../home/home.component';
 import { User } from '../_models/index';
 
 @Component({
+    selector: 'app-account',
     moduleId: module.id,
     templateUrl: 'account.component.html'
 })
@@ -14,7 +15,7 @@ import { User } from '../_models/index';
 export class AccountComponent implements OnInit {
     model: any = {};
     loading = false;
-    currentUser: User;
+    @Input() currentUser: User;
 
     constructor(
         private router: Router,

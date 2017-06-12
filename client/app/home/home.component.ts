@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+﻿import { Component, Input, Output, OnInit } from '@angular/core';
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
