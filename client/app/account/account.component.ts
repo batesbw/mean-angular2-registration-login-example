@@ -34,10 +34,18 @@ export class AccountComponent implements OnInit {
             this.currentUser.email = form.value.email;
             this.userService.update(this.currentUser)
                 .subscribe(
-                    result => console.log(result)
-                );
+                    data => {
+                        this.alertService.success('Update successful', false);
+                    },
+                    error => {
+                        this.alertService.error(error._body);
+                    });
             this.showAccountEvent.emit(this.showAccount)
             localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    }
+
+    cancelUpdate() {
+        this.showAccountEvent.emit(this.showAccount);
     }
 
     ngOnInit() {

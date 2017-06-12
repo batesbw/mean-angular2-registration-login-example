@@ -2,34 +2,25 @@
 <div class="row">
         <div class="col-md-11 user-details">
             <div class="col-md-8 col-md-offset-2">
-                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input
-                                type="text"
-                                id="firstName"
-                                class="form-control"
-                                [ngModel]="currentUser.firstName"
-                                name="firstName"
-                                required>
-                        <label for="lastName">Last Name</label>
-                        <input
-                                type="text"
-                                id="lastName"
-                                class="form-control"
-                                [ngModel]="currentUser.lastName"
-                                name="lastName"
-                                required>
-                        <label for="email">Email</label>
-                        <input
-                                type="text"
-                                id="email"
-                                class="form-control"
-                                [ngModel]="currentUser.email"
-                                name="email"
-                                required>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Update</button>                    
+                <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" name="firstName" [ngModel]="currentUser.firstName" #firstName="ngModel" required />
+                                <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" name="lastName" [ngModel]="currentUser.lastName" #lastName="ngModel" required />
+                                <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" [ngModel]="currentUser.email" #email="ngModel" required email/>
+                                <div *ngIf="f.submitted && !email.valid" class="help-block">Not a valid Email</div>
+                            </div>
+                    <button class="btn btn-primary" type="submit">Save</button>  
+                    <button class="btn btn-danger" type="button" (click)="cancelUpdate()">Cancel</button>                    
+                                      
                 </form>
             </div>
 
