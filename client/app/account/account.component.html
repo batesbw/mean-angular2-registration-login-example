@@ -18,9 +18,11 @@
                                 <input type="email" class="form-control" name="email" [ngModel]="currentUser.email" #email="ngModel" required email/>
                                 <div *ngIf="f.submitted && !email.valid" class="help-block">Not a valid Email</div>
                             </div>
-                    <button class="btn btn-primary" type="submit">Save</button>  
-                    <button class="btn btn-danger" type="button" (click)="cancelUpdate()">Cancel</button>                    
-                                      
+                        <button class="btn btn-labeled btn-success" type="submit">
+                            <span class="btn-label"><i class="fa fa-floppy-o"></i></span>Update</button>
+
+                        <button class="btn btn-labeled btn-danger" type="button" (click)="cancelUpdate()">                    
+                            <span class="btn-label"><i class="fa fa-trash-o"></i></span>Cancel</button>         
                 </form>
             </div>
 
