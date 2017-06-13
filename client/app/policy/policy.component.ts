@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertService, UserService, PolicyService } from '../_services/index';
 import { HomeComponent } from '../home/home.component';
 import { PolicyCreateComponent } from './policy-create.component';
+import { PolicyListComponent } from './policy-list.component';
 
 @Component({
     selector: 'app-policy',

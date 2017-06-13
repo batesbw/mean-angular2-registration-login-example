@@ -6,7 +6,8 @@
     System.config({
         paths: {
             // paths serve as alias
-            'npm:': 'node_modules/'
+            'npm:': 'node_modules/',
+            'lodash': './node_modules/lodash/lodash.js'
         },
         // map tells the System loader where to look for things
         map: {
@@ -23,8 +24,11 @@
             '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            
 
             // other libraries
+            'lodash': 'npm:lodash/lodash.js',
+            'angular2-datatable':'npm:angular2-datatable',
             'rxjs': 'npm:rxjs'
         },
         // packages tells the System loader how to load when no filename and/or no extension
@@ -32,10 +36,17 @@
             app: {
                 main: './main.js',
                 defaultExtension: 'js'
+                },
+            'lodash': {
+                defaultExtension: 'js'
             },
             rxjs: {
                 defaultExtension: 'js'
-            }
+            },
+            'angular2-datatable': {
+                main: './index.js',
+                defaultExtension: 'js'
+  }
         }
     });
 })(this);

@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import 'angular2-datatable';
+import { DataTableModule } from "angular2-datatable";
+
+import { PolicyListModule } from "./policy/index";
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { AppConfig } from './app.config';
@@ -14,15 +18,16 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AccountComponent } from './account/index';
-import { PolicyComponent } from './policy/index';
-import { PolicyCreateComponent } from './policy/index';
+import { PolicyComponent, PolicyCreateComponent } from './policy/index';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        DataTableModule,
+        PolicyListModule
     ],
     declarations: [
         AppComponent,
