@@ -39,7 +39,7 @@ export class PolicyCreateComponent {
             .subscribe(
                 data => {
                     this.alertService.success('New Policy Created', true);
-                    this.router.navigate(['/policy']);
+                    this.router.navigate(['/home/policy']);
                 },
                 error => {
                     this.alertService.error(error._body);

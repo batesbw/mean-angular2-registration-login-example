@@ -10,16 +10,16 @@ import { AuthGuard } from './_guards/index';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent,
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'policy', pathMatch: 'full' },
-      { path: 'policy', component: PolicyComponent }
+      { path: '', redirectTo: '', pathMatch: 'full' },
+      { path: 'policy', component: PolicyComponent } ,
+      { path: 'account', component: AccountComponent},
+      { path: 'policy-create', component: PolicyCreateComponent },
     ] 
     },
     { path: 'register', component: RegisterComponent },
-    { path: 'account', component: AccountComponent},
-    { path: 'policy', component: PolicyComponent },
-    { path: 'policy-create', component: PolicyCreateComponent },
+
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

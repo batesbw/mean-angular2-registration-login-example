@@ -38,7 +38,7 @@ export class AccountComponent implements OnInit {
                         this.alertService.error(error._body);
                     });
             localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home');
     }
 
     ngOnInit() {
