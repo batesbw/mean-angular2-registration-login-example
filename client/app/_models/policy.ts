@@ -8,8 +8,9 @@ export class Policy {
     state: string;
     suburb: string;
     postCode: string;
-    riskRating: string
+    riskRating: string;
     issueDate: string;
+    userId: string;
 
     constructor(
         coverType: string, 
@@ -21,7 +22,8 @@ export class Policy {
         suburb: string,
         postCode: string,
         riskRating: string,
-        issueDate: string) {
+        issueDate: string,
+        userId: string) {
             this.coverType = coverType;
             this.policyNumber = policyNumber;
             this.contractValue = contractValue;
@@ -31,7 +33,8 @@ export class Policy {
             this.suburb = suburb;
             this.postCode = postCode;
             this.riskRating = riskRating;
-            this.issueDate = issueDate;            
+            this.issueDate = issueDate;
+            this.userId = userId;        
                 
     }
 

@@ -35,6 +35,7 @@ export class PolicyCreateComponent {
     
     createPolicy() {
         this.loading = true;
+        this.model.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
         this.policyService.create(this.model)
             .subscribe(
                 data => {
