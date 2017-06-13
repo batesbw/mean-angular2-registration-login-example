@@ -11,6 +11,7 @@ var service = {};
 
 service.authenticate = authenticate;
 service.getAll = getAll;
+service.getAllForUser = getAllForUser;
 service.getById = getById;
 service.create = create;
 service.update = update;
@@ -46,6 +47,22 @@ function getAll() {
     var deferred = Q.defer();
 
     db.policies.find().toArray(function (err, policies) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        // return policies (without hashed passwords)
+        policies = _.map(policies, function (policy) {
+            return _.omit(policy, 'hash');
+        });
+
+        deferred.resolve(policies);
+    });
+
+    return deferred.promise;
+}
+
+function getAllForUser(userId) {
+    var deferred = Q.defer();
+    db.policies.find({ userId: userId }).toArray(function (err, policies) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         // return policies (without hashed passwords)

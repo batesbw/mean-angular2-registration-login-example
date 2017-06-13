@@ -7,6 +7,7 @@ var policyService = require('services/policy.service');
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
+router.get('/getAllForUser', getAllForUser);
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
@@ -41,6 +42,16 @@ function register(req, res) {
 
 function getAll(req, res) {
     policyService.getAll()
+        .then(function (policies) {
+            res.send(policies);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getAllForUser(req, res) {
+    policyService.getAllForUser(req.user.sub)
         .then(function (policies) {
             res.send(policies);
         })

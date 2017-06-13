@@ -22,7 +22,7 @@ export class PolicyListComponent {
     }
 
     ngOnInit(): void {
-        this.policyService.getAll()
+        this.policyService.getAllForUser(JSON.parse(localStorage.getItem('currentUser'))._id)
             .subscribe((response)=> {
                 setTimeout(()=> {
                     this.data = response;

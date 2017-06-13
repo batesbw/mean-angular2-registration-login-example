@@ -15,6 +15,10 @@ export class PolicyService {
         return this.http.get(this.config.apiUrl + '/policies', this.jwt()).map((response: Response) => response.json());
     }
 
+    getAllForUser(userId: string) {
+        return this.http.get(this.config.apiUrl + '/policies/getAllForUser', this.jwt()).map((response: Response) => response.json());
+    }
+
     getById(_id: string) {
         return this.http.get(this.config.apiUrl + '/policies/' + _id, this.jwt()).map((response: Response) => response.json());
     }
