@@ -14,15 +14,11 @@ import { PolicyCreateComponent } from './policy-create.component';
 export class PolicyComponent {
     model: any = {};
     loading = false;
-    showCreatePolicyFlag: boolean; 
 
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService,
         private policyService: PolicyService) { }
-    
-    showCreatePolicy() {
-        this.showCreatePolicyFlag = true;
-    }
+
 }

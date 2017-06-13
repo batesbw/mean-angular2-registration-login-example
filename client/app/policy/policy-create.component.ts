@@ -13,7 +13,18 @@ import { PolicyComponent } from './policy.component';
 export class PolicyCreateComponent {
     model: any = {};
     loading = false;
-    showCreatePolicyFlag: boolean; 
+    /* FOR LATER USE - need this in a dropdown
+    coverTypes = [
+        {name: 'C01 - New single dwelling construction'},
+        {name: 'C02 - Multiple Dwellings Alterations / Additions – Structural'},
+        {name: 'C03 - New Multiple Dwellings Construction (&lt;= 3 storeys)'},
+        {name: 'C04 - Single Dwelling Alterations / Additions - Structural'},
+        {name: 'C05 - Swimming Pools'},
+        {name: 'C06 - Single Dwelling Renovations - Non Structural'},
+        {name: 'C07 - Other'},
+        {name: 'C08 - Multiple Dwellings Renovations - Non Structural'},
+        {name: 'C09 - New Duplex, Dual Occupancy, Triplex or Terrace (Attached) Construction'}                                          
+    ];*/
 
     constructor(
         private router: Router,
@@ -21,13 +32,14 @@ export class PolicyCreateComponent {
         private alertService: AlertService,
         private policyService: PolicyService) { }
     
-    register() {
+    
+    createPolicy() {
         this.loading = true;
         this.policyService.create(this.model)
             .subscribe(
                 data => {
                     this.alertService.success('New Policy Created', true);
-                    //this.router.navigate(['/login']);
+                    this.router.navigate(['/policy']);
                 },
                 error => {
                     this.alertService.error(error._body);
@@ -35,4 +47,5 @@ export class PolicyCreateComponent {
                 });
         this.loading = false;
     }
+
 }

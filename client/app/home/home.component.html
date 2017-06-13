@@ -17,7 +17,7 @@
                     <div class="user-pad">
                         <h3>Welcome back, {{ currentUser.firstName }}</h3>
                         <h4 class="white"><i class="fa fa-check-circle-o"></i> {{ currentUser.email}}</h4>
-                        <button type="button" class="btn btn-labeled btn-success" (click)="showAccountDetail()">
+                        <button type="button" class="btn btn-labeled btn-success" [routerLink]="['/account']">
                             <span class="btn-label"><i class="fa fa-pencil"></i></span>Update</button>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <a [routerLink]="['']" class="btn btn-default">
                     <i class="fa fa-home fa-3x"></i>
                     </a>
-                <a (click)="showPolicyDetail()" class="btn btn-default">
+                <a [routerLink]="['/policy']" class="btn btn-default">
                     <i class="fa fa-money fa-3x"></i>
                     </a>
                 <a [routerLink]="['']" class="btn btn-default">
@@ -55,5 +55,3 @@
         </div>
     </div>
 </header>
-<app-account *ngIf="showAccount" [currentUser]="currentUser" (showAccountEvent)="receiveAccountEvent($event)"></app-account>
-<app-policy *ngIf="showPolicy"></app-policy>

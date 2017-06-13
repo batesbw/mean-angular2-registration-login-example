@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from "@angular/forms";
 
@@ -17,14 +17,11 @@ export class AccountComponent implements OnInit {
     loading = false;
     @Input() currentUser: User;
 
-    showAccount: boolean = false;
-    @Output() showAccountEvent = new EventEmitter<boolean>();
-
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService) {
-            //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         }
     
     onSubmit(form: NgForm) {
@@ -40,12 +37,8 @@ export class AccountComponent implements OnInit {
                     error => {
                         this.alertService.error(error._body);
                     });
-            this.showAccountEvent.emit(this.showAccount)
             localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    }
-
-    cancelUpdate() {
-        this.showAccountEvent.emit(this.showAccount);
+        this.router.navigateByUrl('/');
     }
 
     ngOnInit() {

@@ -6,6 +6,7 @@ export class Policy {
     addressLine1: string;
     addressLine2: string;
     state: string;
+    suburb: string;
     postCode: string;
     riskRating: string
     issueDate: string;
@@ -17,6 +18,7 @@ export class Policy {
         addressLine1: string, 
         addressLine2: string,    
         state: string,
+        suburb: string,
         postCode: string,
         riskRating: string,
         issueDate: string) {
@@ -26,6 +28,7 @@ export class Policy {
             this.addressLine1 = addressLine1;
             this.addressLine2 = addressLine2;
             this.state = state;
+            this.suburb = suburb;
             this.postCode = postCode;
             this.riskRating = riskRating;
             this.issueDate = issueDate;            
