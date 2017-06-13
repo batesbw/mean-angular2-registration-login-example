@@ -9,11 +9,13 @@ import { AppConfig } from './app.config';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, PolicyService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AccountComponent } from './account/index';
+import { PolicyComponent } from './policy/index';
+import { PolicyCreateComponent } from './policy/index';
 
 @NgModule({
     imports: [
@@ -28,14 +30,17 @@ import { AccountComponent } from './account/index';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        AccountComponent
+        AccountComponent,
+        PolicyComponent,
+        PolicyCreateComponent
     ],
     providers: [
         AppConfig,
         AuthGuard,
         AlertService,
         AuthenticationService,
-        UserService
+        PolicyService,
+        UserService,
     ],
     bootstrap: [AppComponent]
 })

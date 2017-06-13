@@ -10,18 +10,27 @@ import { UserService } from '../_services/index';
 })
 
 export class HomeComponent implements OnInit {
+    //user variables
     currentUser: User;
     users: User[] = [];
-    showAccount: boolean; 
 
+    //account variables
+    showAccount: boolean;
+
+    //policy variables
+    showPolicy: boolean;
+
+    //primary constructor
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
+    //initialisation method
     ngOnInit() {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
+    //user methods
     deleteUser(_id: string) {
         this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
     }
@@ -30,6 +39,7 @@ export class HomeComponent implements OnInit {
         this.userService.getAll().subscribe(users => { this.users = users; });
     }
 
+    //account methods
     receiveAccountEvent($event: any) {
         this.showAccount = $event;
     }
@@ -38,4 +48,8 @@ export class HomeComponent implements OnInit {
         this.showAccount = true;
     }
 
+    //policy methods
+    showPolicyDetail() {
+        this.showPolicy = true;
+    }
 }

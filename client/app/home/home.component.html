@@ -42,7 +42,7 @@
                 <a [routerLink]="['']" class="btn btn-default">
                     <i class="fa fa-home fa-3x"></i>
                     </a>
-                <a [routerLink]="['']" class="btn btn-default">
+                <a (click)="showPolicyDetail()" class="btn btn-default">
                     <i class="fa fa-money fa-3x"></i>
                     </a>
                 <a [routerLink]="['']" class="btn btn-default">
@@ -56,3 +56,4 @@
     </div>
 </header>
 <app-account *ngIf="showAccount" [currentUser]="currentUser" (showAccountEvent)="receiveAccountEvent($event)"></app-account>
+<app-policy *ngIf="showPolicy"></app-policy>

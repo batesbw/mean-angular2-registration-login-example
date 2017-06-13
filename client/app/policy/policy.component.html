@@ -1,0 +1,21 @@
+<hr>
+<div class="row">
+    <div class="col-md-11 user-details">
+        <div class="container">
+            <div class="row">
+                <button type="button" class="btn btn-labeled btn-success" (click)="showCreatePolicy()">
+                    <span class="btn-label"><i class="fa fa-plus"></i></span>New Policy</button>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-3">
+                    List of Policies goes here
+                </div>
+                <div class="col-xs-7">
+                    <app-policy-create *ngIf="showCreatePolicyFlag"></app-policy-create>    
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
