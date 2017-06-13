@@ -20,7 +20,6 @@ export class PolicyService {
     }
 
     create(policy: Policy) {
-        console.log(this.config.apiUrl + '/policies/register', policy, this.jwt());
         return this.http.post(this.config.apiUrl + '/policies/register', policy, this.jwt());
     }
 
