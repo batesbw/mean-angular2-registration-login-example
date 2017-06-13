@@ -42,7 +42,7 @@
                 <a [routerLink]="['']" class="btn btn-default">
                     <i class="fa fa-home fa-3x"></i>
                     </a>
-                <a [routerLink]="['/policy']" class="btn btn-default">
+                <a [routerLink]="['/home/policy']" class="btn btn-default">
                     <i class="fa fa-money fa-3x"></i>
                     </a>
                 <a [routerLink]="['']" class="btn btn-default">
@@ -55,3 +55,6 @@
         </div>
     </div>
 </header>
+<div class="row user-menu-container square">
+    <router-outlet></router-outlet>
+</div>

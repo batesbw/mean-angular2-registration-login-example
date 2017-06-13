@@ -8,8 +8,14 @@ import { PolicyComponent, PolicyCreateComponent } from './policy/index';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
-    //{ path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
+    { path: 'home', component: HomeComponent,
+    children: [
+      { path: '', redirectTo: 'policy', pathMatch: 'full' },
+      { path: 'policy', component: PolicyComponent }
+    ] 
+    },
     { path: 'register', component: RegisterComponent },
     { path: 'account', component: AccountComponent},
     { path: 'policy', component: PolicyComponent },
