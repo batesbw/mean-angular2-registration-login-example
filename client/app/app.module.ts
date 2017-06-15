@@ -4,35 +4,33 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 import { AppConfig } from './app.config';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService, PolicyService } from './_services/index';
-import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AccountComponent } from './account/index';
-import { PolicyComponent } from './policy/index';
-import { PolicyCreateComponent } from './policy/index';
+import { PolicyListComponent } from './home/policy/policy-list.component';
+import { PolicyDetailComponent } from './home/policy/policy-detail.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        HomeModule,
+        AppRoutingModule,
     ],
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent,
         LoginComponent,
         RegisterComponent,
-        AccountComponent,
-        PolicyComponent,
-        PolicyCreateComponent
+        AccountComponent
     ],
     providers: [
         AppConfig,

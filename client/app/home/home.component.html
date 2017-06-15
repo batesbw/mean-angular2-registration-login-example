@@ -16,7 +16,7 @@
                 <div class="col-md-12 no-pad">
                     <div class="user-pad">
                         <h3>Welcome back, {{ currentUser.firstName }}</h3>
-                        <h4 class="white"><i class="fa fa-check-circle-o"></i> {{ currentUser.email}}</h4>
+                        <h4 class="white"><i class="fa fa-check-circle-o"></i> {{ currentUser.email }}</h4>
                         <button type="button" class="btn btn-labeled btn-success" [routerLink]="['/home/account']">
                             <span class="btn-label"><i class="fa fa-pencil"></i></span>Update</button>
                     </div>
@@ -42,19 +42,17 @@
                 <a [routerLink]="['']" class="btn btn-default">
                     <i class="fa fa-home fa-3x"></i>
                     </a>
-                <a [routerLink]="['/home/policy']" class="btn btn-default">
+                <a [routerLink]="['/home/policy-list']" class="btn btn-default">
                     <i class="fa fa-money fa-3x"></i>
                     </a>
                 <a [routerLink]="['']" class="btn btn-default">
                     <i class="fa fa-laptop fa-3x"></i>
                     </a>
-                <a [routerLink]="['/login']" class="btn btn-default">
+                <a [routerLink]="['/logout']" class="btn btn-default">
                     <i class="fa fa-power-off fa-3x"></i>
                     </a>
             </div>
         </div>
     </div>
 </header>
-<div class="row user-menu-container square">
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

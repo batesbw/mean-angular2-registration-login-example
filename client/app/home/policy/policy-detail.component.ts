@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AlertService, UserService, PolicyService } from '../_services/index';
-import { HomeComponent } from '../home/home.component';
-import { PolicyCreateComponent } from './policy-create.component';
+import { UserService } from '../../_services/user.service';
+import { AlertService } from '../../_services/alert.service';
+import { PolicyService } from '../../_services/policy.service';
 
 @Component({
-    selector: 'app-policy',
+    selector: 'app-policy-detail',
     moduleId: module.id,
-    templateUrl: 'policy.component.html'
+    templateUrl: 'policy-detail.component.html'
 })
 
-export class PolicyComponent {
+export class PolicyDetailComponent {
     model: any = {};
     loading = false;
 
