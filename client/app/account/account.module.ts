@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AccountComponent } from '../account/index';
 
@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
     imports: [
         FormsModule,
         CommonModule,
-        RouterModule
+        RouterModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AccountComponent

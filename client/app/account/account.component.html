@@ -1,31 +1,29 @@
 <hr>
 <div class="row">
-        <div class="col-md-11 user-details">
-            <div class="col-md-8 col-md-offset-2">
-                <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-                                <label for="firstName">First Name</label>
-                                <input type="text" class="form-control" name="firstName" [ngModel]="currentUser.firstName" #firstName="ngModel" required />
-                                <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" class="form-control" name="lastName" [ngModel]="currentUser.lastName" #lastName="ngModel" required />
-                                <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
-                            </div>
-                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" [ngModel]="currentUser.email" #email="ngModel" required email/>
-                                <div *ngIf="f.submitted && !email.valid" class="help-block">Not a valid Email</div>
-                            </div>
-                        <button class="btn btn-labeled btn-success" type="submit">
-                            <span class="btn-label"><i class="fa fa-floppy-o"></i></span>Update</button>
-
-                        <button class="btn btn-labeled btn-danger" type="button" [routerLink]="['/home']">                    
-                            <span class="btn-label"><i class="fa fa-trash-o"></i></span>Cancel</button>         
-                </form>
-            </div>
-
-
+    <div class="col-md-11 user-details">
+        <div class="col-md-8 col-md-offset-2">
+            <h2>Account Detail</h2>
+            <h3><i>FormControl in a FormGroup</i></h3>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="form-group">
+                    <label class="center-block">First Name:
+                    <input class="form-control" formControlName="firstName">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="center-block">Last Name:
+                    <input class="form-control" formControlName="lastName">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="center-block">Email:
+                    <input class="form-control" formControlName="email">
+                    </label>
+                </div>
+                <div style="margin-bottom: 1em">
+                    <button type="submit" [disabled]="userForm.pristine" class="btn btn-success">Save</button> &nbsp;
+                </div>
+            </form>
         </div>
+    </div>
 </div>
