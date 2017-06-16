@@ -44,7 +44,12 @@ export class AccountComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.userService.getById(this.user_id).subscribe(user => { this.currentUser = user;}, error => {this.alertService.error(error._body);});
+        this.userService.getById(this.user_id)
+            .subscribe((response)=> {
+                setTimeout(()=> {
+                    this.currentUser = response;
+                }, 5000);
+            });
         console.log(this.currentUser);
     }
 
