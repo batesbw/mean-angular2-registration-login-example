@@ -17,44 +17,42 @@ import { User } from '../_models/index';
 export class AccountComponent implements OnInit {
     loading = false;
     @Input() currentUser: User;
-    @Input() savedUser: User;
+    user_id = JSON.parse(localStorage.getItem('currentUser'))._id;
     userForm: FormGroup
-    
 
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService,
         private formBuilder: FormBuilder) {
-            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            console.log(this.currentUser);
-            this.savedUser = JSON.parse(localStorage.getItem('currentUser'));
-            this.createForm();
+            //this.createForm();
         }
     
     onSubmit() {
-            this.savedUser = this.prepareUser();
-            this.userService.update(this.savedUser)
-                .subscribe(
-                    data => {
-                        this.alertService.success('Update successful', false);
-                    },
-                    error => {
-                        this.alertService.error(error._body);
-                    });
-            localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+        this.currentUser = this.prepareUser();
+        this.userService.update(this.currentUser)
+            .subscribe(
+                data => {
+                    this.alertService.success('Update successful', false);
+                },
+                error => {
+                    this.alertService.error(error._body);
+                });
+        let currentUser = this.userService.getById(this.user_id);
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
         this.router.navigateByUrl('/home'); 
     }
 
     ngOnInit() {
-
+        this.userService.getById(this.user_id).subscribe(user => { this.currentUser = user;}, error => {this.alertService.error(error._body);});
+        console.log(this.currentUser);
     }
 
     createForm() {
         this.userForm = this.formBuilder.group({
-            firstName: [this.savedUser.firstName, Validators.required],
-            lastName: [this.savedUser.lastName, Validators.required],
-            email: [this.savedUser.email, Validators.required]
+            firstName: [this.currentUser.firstName, Validators.required],
+            lastName: [this.currentUser.lastName, Validators.required],
+            email: [this.currentUser.email, Validators.required]
         })
     }
 
@@ -62,12 +60,11 @@ export class AccountComponent implements OnInit {
         const formModel = this.userForm.value;
 
         const saveUser: User = {
-            firstName: formModel.firstname as string,
-            lastName: formModel.firstname as string,
-            email: formModel.firstname as string,
-            _id: this.currentUser._id
+            firstName: formModel.firstName as string,
+            lastName: formModel.lastName as string,
+            email: formModel.email as string,
+            _id: this.user_id
         }
-        console.log(saveUser);
         return saveUser;
     }
 }
