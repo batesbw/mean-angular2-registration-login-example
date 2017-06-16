@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
+
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 
 import { AlertService, UserService } from '../_services/index';
 import { HomeComponent } from '../home/home.component';
 import { User } from '../_models/index';
+import { User2Service } from '../_services/user2.service';
 
 @Component({
     selector: 'app-account',
@@ -16,16 +18,20 @@ import { User } from '../_models/index';
 
 export class AccountComponent implements OnInit {
     loading = false;
-    @Input() currentUser: User;
+    currentUser: any;
+    another: any;
     user_id = JSON.parse(localStorage.getItem('currentUser'))._id;
     userForm: FormGroup
+
 
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService,
-        private formBuilder: FormBuilder) {
-            //this.createForm();
+        private formBuilder: FormBuilder,
+        private user2Service: User2Service,
+        private location: Location,
+        private route: ActivatedRoute) {
         }
     
     onSubmit() {
@@ -39,18 +45,19 @@ export class AccountComponent implements OnInit {
                     this.alertService.error(error._body);
                 });
         let currentUser = this.userService.getById(this.user_id);
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        //localStorage.setItem('currentUser', JSON.stringify(currentUser));
         this.router.navigateByUrl('/home'); 
     }
 
-    ngOnInit() {
-        this.userService.getById(this.user_id)
-            .subscribe((response)=> {
-                setTimeout(()=> {
-                    this.currentUser = response;
-                }, 5000);
-            });
-        console.log(this.currentUser);
+    ngOnInit(): void {
+        this.route.data
+        .subscribe(
+            (data: {  }) => {
+                this.currentUser = data;
+                this.currentUser = this.currentUser.user;
+                console.log(this.currentUser);
+        });
+        this.createForm();
     }
 
     createForm() {

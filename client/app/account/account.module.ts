@@ -5,6 +5,7 @@ import { AccountComponent } from '../account/index';
 
 import { UserService } from '../_services/user.service';
 import { CommonModule } from '@angular/common';
+import { User2Service } from '../_services/user2.service';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
         AccountComponent
     ],
     providers: [
-        UserService
+        UserService,
+        User2Service
     ]
 })
 

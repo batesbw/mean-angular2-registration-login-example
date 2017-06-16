@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
     //user variables
     currentUser: User;
     users: User[] = [];
-
+    user_id = JSON.parse(localStorage.getItem('currentUser'))._id;
+    
     //primary constructor
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

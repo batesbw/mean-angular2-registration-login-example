@@ -8,12 +8,14 @@ import { AuthGuard } from './_guards/index';
 import { AccountComponent } from './account/account.component';
 import { PolicyComponent } from './policy/policy.component';
 import { PolicyCreateComponent } from './policy/policy-create.component';
+import { UserDetailResolve } from './_services/user-detail.service';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard], 
         children: [
-          { path: 'account', component: AccountComponent },
+          { path: 'account/:_id', component: AccountComponent, resolve: { user: UserDetailResolve } },
+          { path: 'account', component: AccountComponent},
           { path: 'policy', component: PolicyComponent },
           { path: 'policy-create', component: PolicyCreateComponent }
         ]
@@ -31,6 +33,9 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    UserDetailResolve
   ]
 })
 

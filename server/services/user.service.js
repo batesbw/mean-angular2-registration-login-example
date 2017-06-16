@@ -4,6 +4,8 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
+var ObjectID = require('mongoskin').ObjectID;
+
 var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
 
@@ -44,7 +46,6 @@ function authenticate(email, password) {
 
 function getAll() {
     var deferred = Q.defer();
-
     db.users.find().toArray(function (err, users) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
@@ -61,8 +62,7 @@ function getAll() {
 
 function getById(_id) {
     var deferred = Q.defer();
-
-    db.users.findById(_id, function (err, user) {
+    db.users.findOne({ _id : ObjectID.createFromHexString(_id)}, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user) {
