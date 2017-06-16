@@ -1,15 +1,4 @@
-﻿<!--<div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.firstName}}!</h1>
-    <p>You're logged in with the MEAN Stack & Angular 2!!</p>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.email}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user._id)">Delete</a>
-        </li>
-    </ul>
-</div>-->
-<header class="row">
+﻿<header class="row">
     <div class="row user-menu-container square">
         <div class="col-md-11 user-details">
             <div class="row coralbg white">
@@ -55,6 +44,4 @@
         </div>
     </div>
 </header>
-<div class="row user-menu-container square">
     <router-outlet></router-outlet>
-</div>

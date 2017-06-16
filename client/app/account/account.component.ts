@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 import { NgForm } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 import { AlertService, UserService } from '../_services/index';
 import { HomeComponent } from '../home/home.component';
