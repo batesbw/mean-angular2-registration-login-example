@@ -14,8 +14,8 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard], 
         children: [
-          { path: 'account', component: AccountComponent, resolve: { user: UserDetailResolve } },
-
+          { path: 'account/:_id', component: AccountComponent, resolve: { user: UserDetailResolve } },
+          { path: 'account', component: AccountComponent},
           { path: 'policy', component: PolicyComponent },
           { path: 'policy-create', component: PolicyCreateComponent }
         ]

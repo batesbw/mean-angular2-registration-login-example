@@ -16,6 +16,7 @@ export class User2Service {
             .get(this.userUrl, this.jwt())
             .toPromise()
             .then((response) => {
+                console.log(response.json());
                 return response.json() as User[];
             })
             .catch(this.handleError);

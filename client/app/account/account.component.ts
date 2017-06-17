@@ -49,8 +49,14 @@ export class AccountComponent implements OnInit {
         this.router.navigateByUrl('/home'); 
     }
 
-    ngOnInit() {
-        this.route.data.subscribe( data => this.currentUser = data)
+    ngOnInit(): void {
+        this.route.data
+        .subscribe(
+            (data: {  }) => {
+                this.currentUser = data;
+                this.currentUser = this.currentUser.user;
+                console.log(this.currentUser);
+        });
         this.createForm();
     }
 

@@ -16,8 +16,7 @@ export class UserService {
     }
 
     getById(_id: string) {
-        console.log(this.http.get(this.config.apiUrl + '/users/current', this.jwt()).map((response: Response) => response.json()));
-        return this.http.get(this.config.apiUrl + '/users/current', this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.config.apiUrl + '/users/' + _id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(user: User) {
