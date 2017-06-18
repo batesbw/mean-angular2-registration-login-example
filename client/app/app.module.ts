@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/index';
 import { AccountComponent } from './account/index';
 import { PolicyComponent } from './policy/index';
 import { PolicyCreateComponent } from './policy/index';
+import { UserResolveService } from './_services/user-resolve.service';
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import { PolicyCreateComponent } from './policy/index';
         AuthenticationService,
         PolicyService,
         UserService,
+        UserResolveService
     ],
     bootstrap: [AppComponent]
 })

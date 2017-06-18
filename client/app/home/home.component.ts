@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
@@ -15,13 +16,15 @@ export class HomeComponent implements OnInit {
     users: User[] = [];
 
     //primary constructor
-    constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+    constructor(
+        private userService: UserService,
+        private route: ActivatedRoute) { }
 
     //initialisation method
     ngOnInit() {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.route.data.forEach((data) => {
+            this.currentUser = data.user
+        });
     }
 
     //user methods

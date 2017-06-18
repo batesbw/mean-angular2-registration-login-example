@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from "@angular/forms";
 
 import { AlertService, UserService } from '../_services/index';
 import { HomeComponent } from '../home/home.component';
 import { User } from '../_models/index';
+import { UserResolveService } from '../_services/user-resolve.service';
 
 @Component({
     selector: 'app-account',
@@ -19,10 +20,9 @@ export class AccountComponent implements OnInit {
 
     constructor(
         private router: Router,
+        private route: ActivatedRoute,
         private userService: UserService,
-        private alertService: AlertService) {
-            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        }
+        private alertService: AlertService) { }
     
     onSubmit(form: NgForm) {
             // Edit
@@ -37,13 +37,12 @@ export class AccountComponent implements OnInit {
                     error => {
                         this.alertService.error(error._body);
                     });
-            localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
         this.router.navigateByUrl('/home');
     }
 
     ngOnInit() {
-        this.userService.userIsEdit.subscribe(
-            (currentUser: User) => this.currentUser = currentUser
-        );
+        this.route.data.forEach((data) => {
+            this.currentUser = data.user
+        });
     }
 }

@@ -7,9 +7,10 @@ import { AccountComponent } from './account/index';
 import { PolicyComponent, PolicyCreateComponent } from './policy/index';
 import { AuthGuard } from './_guards/index';
 import { HOME_ROUTES } from './home/home.routing';
+import { UserResolveService } from './_services/user-resolve.service';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard]},
+    { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     ...HOME_ROUTES,
